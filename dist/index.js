@@ -20,7 +20,7 @@ program
 });
 program
     .command("tunnel")
-    .option("-cport, --clientsProxyPort <number>", "set the tunnel host", "localhost")
+    .option("-cport, --clientsProxyPort <number>", "set the tunnel host", "53505")
     .option("-pport, --providersProxyPort <number>", "set the tunnel port", "53506")
     .action((options) => {
     console.log("Starting tunnel with the following options:", options);
