@@ -10,23 +10,25 @@ program
     .option("-pport, --providersProxyPort <number>", "set the tunnel port", "53506")
     .option("-availability, --minimumAvailability <number>", "the minimum pool availability", "10")
     .action((options) => {
-    console.log("Starting proxy with the following options:", options);
-    (0, elastic_tools_1.createProxy)({
+    const parsedOptions = {
         internalProviderProxyPort: parseInt(options.internalProviderProxyPort),
         minimumAvailability: parseInt(options.minimumAvailability),
         providersProxyHost: options.providersProxyHost,
-        providersProxyPort: parseInt(options.providersProxyHost),
-    });
+        providersProxyPort: parseInt(options.providersProxyPort),
+    };
+    console.log("Starting proxy with the following options:", parsedOptions);
+    (0, elastic_tools_1.createProxy)(parsedOptions);
 });
 program
     .command("tunnel")
     .option("-cport, --clientsProxyPort <number>", "set the tunnel host", "53505")
     .option("-pport, --providersProxyPort <number>", "set the tunnel port", "53506")
     .action((options) => {
-    console.log("Starting tunnel with the following options:", options);
-    (0, elastic_tools_1.createTunnel)({
+    const parsedOptions = {
         clientsProxyPort: parseInt(options.clientsProxyPort),
         providersProxyPort: parseInt(options.providersProxyPort),
-    });
+    };
+    console.log("Starting tunnel with the following options:", parsedOptions);
+    (0, elastic_tools_1.createTunnel)(parsedOptions);
 });
 program.parse(process.argv);

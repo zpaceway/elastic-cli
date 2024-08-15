@@ -29,13 +29,14 @@ program
     "10"
   )
   .action((options: CreateProxyParams) => {
-    console.log("Starting proxy with the following options:", options);
-    createProxy({
+    const parsedOptions = {
       internalProviderProxyPort: parseInt(options.internalProviderProxyPort),
       minimumAvailability: parseInt(options.minimumAvailability),
       providersProxyHost: options.providersProxyHost,
-      providersProxyPort: parseInt(options.providersProxyHost),
-    });
+      providersProxyPort: parseInt(options.providersProxyPort),
+    };
+    console.log("Starting proxy with the following options:", parsedOptions);
+    createProxy(parsedOptions);
   });
 
 program
@@ -47,11 +48,12 @@ program
     "53506"
   )
   .action((options: CreateTunnelParams) => {
-    console.log("Starting tunnel with the following options:", options);
-    createTunnel({
+    const parsedOptions = {
       clientsProxyPort: parseInt(options.clientsProxyPort),
       providersProxyPort: parseInt(options.providersProxyPort),
-    });
+    };
+    console.log("Starting tunnel with the following options:", parsedOptions);
+    createTunnel(parsedOptions);
   });
 
 program.parse(process.argv);
