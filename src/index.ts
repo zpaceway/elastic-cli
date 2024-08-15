@@ -29,6 +29,7 @@ program
     "10"
   )
   .action((options: CreateProxyParams) => {
+    console.log("Starting proxy with the following options:", options);
     createProxy({
       internalProviderProxyPort: parseInt(options.internalProviderProxyPort),
       minimumAvailability: parseInt(options.minimumAvailability),
@@ -50,6 +51,7 @@ program
     "53506"
   )
   .action((options: CreateTunnelParams) => {
+    console.log("Starting tunnel with the following options:", options);
     createTunnel({
       clientsProxyPort: parseInt(options.clientsProxyPort),
       providersProxyPort: parseInt(options.providersProxyPort),
