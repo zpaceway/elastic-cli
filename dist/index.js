@@ -5,7 +5,7 @@ const commander_1 = require("commander");
 const program = new commander_1.Command();
 program
     .command("proxy")
-    .option("-ccode, --countryCode <number>", "set internal proxy port", "53507")
+    .option("-ccode, --countryCode <number>", "set internal proxy port", "US")
     .option("-thost, --tunnelHost <string>", "set the tunnel host", "localhost")
     .option("-availability, --minimumAvailability <number>", "the minimum pool availability", "10")
     .action((options) => {
@@ -20,7 +20,7 @@ program
 });
 program
     .command("tunnel")
-    .option("-ccode, --countryCode <string>", "set the tunnel host", "53505")
+    .option("-ccode, --countryCode <string>", "set the tunnel host", "US")
     .action((options) => {
     const parsedOptions = {
         countryCode: options.countryCode,
