@@ -29,4 +29,17 @@ program
     const tunnel = (0, elastic_tools_1.createTunnel)(parsedOptions);
     tunnel.listen();
 });
+program
+    .command("client")
+    .option("-ccode, --countryCode <number>", "set internal proxy port", "US")
+    .option("-thost, --tunnelHost <string>", "set the tunnel host", "localhost")
+    .action((options) => {
+    const parsedOptions = {
+        countryCode: options.countryCode,
+        tunnelHost: options.tunnelHost,
+    };
+    console.log("Starting client with the following options:", parsedOptions);
+    const client = (0, elastic_tools_1.createClient)(parsedOptions);
+    client.listen();
+});
 program.parse(process.argv);

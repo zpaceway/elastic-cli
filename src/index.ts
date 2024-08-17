@@ -1,7 +1,8 @@
-import { createProxy, createTunnel } from "elastic-tools";
+import { createProxy, createTunnel, createClient } from "elastic-tools";
 import { Command } from "commander";
 
 type ToString<T> = { [key in keyof T]: string };
+type CreateClientParams = ToString<Parameters<typeof createClient>[0]>;
 type CreateProxyParams = ToString<Parameters<typeof createProxy>[0]>;
 type CreateTunnelParams = ToString<Parameters<typeof createTunnel>[0]>;
 
@@ -40,6 +41,22 @@ program
     console.log("Starting tunnel with the following options:", parsedOptions);
     const tunnel = createTunnel(parsedOptions);
     tunnel.listen();
+  });
+
+program
+  .command("client")
+  .option("-ccode, --countryCode <number>", "set internal proxy port", "US")
+  .option("-thost, --tunnelHost <string>", "set the tunnel host", "localhost")
+  .action((options: CreateClientParams) => {
+    const parsedOptions = {
+      countryCode: options.countryCode as Parameters<
+        typeof createClient
+      >[0]["countryCode"],
+      tunnelHost: options.tunnelHost,
+    };
+    console.log("Starting client with the following options:", parsedOptions);
+    const client = createClient(parsedOptions);
+    client.listen();
   });
 
 program.parse(process.argv);
