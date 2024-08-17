@@ -17,7 +17,8 @@ program
         providersProxyPort: parseInt(options.providersProxyPort),
     };
     console.log("Starting proxy with the following options:", parsedOptions);
-    (0, elastic_tools_1.createProxy)(parsedOptions);
+    const proxy = (0, elastic_tools_1.createProxy)(parsedOptions);
+    proxy.listen(parsedOptions);
 });
 program
     .command("tunnel")
@@ -29,6 +30,7 @@ program
         providersProxyPort: parseInt(options.providersProxyPort),
     };
     console.log("Starting tunnel with the following options:", parsedOptions);
-    (0, elastic_tools_1.createTunnel)(parsedOptions);
+    const tunnel = (0, elastic_tools_1.createTunnel)();
+    tunnel.listen(parsedOptions);
 });
 program.parse(process.argv);

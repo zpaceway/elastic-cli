@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@types/node": "^22.3.0",
+    "@types/node": "^22.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   },
@@ -8,7 +8,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -f -r ./dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -16,6 +16,6 @@
   "description": "",
   "dependencies": {
     "commander": "^12.1.0",
-    "elastic-tools": "github:zpaceway/elastic-tools#9703bbe48863a3d2442a768639f50313b9a58275"
+    "elastic-tools": "github:zpaceway/elastic-tools#8fe3e199b94e02197844cdbf0723c319ee49861a"
   }
 }

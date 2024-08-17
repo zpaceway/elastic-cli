@@ -2,8 +2,11 @@ import { createProxy, createTunnel } from "elastic-tools";
 import { Command } from "commander";
 
 type ToString<T> = { [key in keyof T]: string };
-type CreateProxyParams = ToString<Parameters<typeof createProxy>[0]>;
-type CreateTunnelParams = ToString<Parameters<typeof createTunnel>[0]>;
+type CreateProxyParams = ToString<Parameters<typeof createProxy>[0]> &
+  ToString<Parameters<ReturnType<typeof createProxy>["listen"]>[0]>;
+type CreateTunnelParams = ToString<
+  Parameters<ReturnType<typeof createTunnel>["listen"]>[0]
+>;
 
 const program = new Command();
 program
@@ -36,7 +39,8 @@ program
       providersProxyPort: parseInt(options.providersProxyPort),
     };
     console.log("Starting proxy with the following options:", parsedOptions);
-    createProxy(parsedOptions);
+    const proxy = createProxy(parsedOptions);
+    proxy.listen(parsedOptions);
   });
 
 program
@@ -53,7 +57,8 @@ program
       providersProxyPort: parseInt(options.providersProxyPort),
     };
     console.log("Starting tunnel with the following options:", parsedOptions);
-    createTunnel(parsedOptions);
+    const tunnel = createTunnel();
+    tunnel.listen(parsedOptions);
   });
 
 program.parse(process.argv);
