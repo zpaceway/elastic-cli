@@ -16,6 +16,6 @@
   "description": "",
   "dependencies": {
     "commander": "^12.1.0",
-    "elastic-tools": "github:zpaceway/elastic-tools#bea613ebf5408a5c90b394ad7b5e8236e7ade8a2"
+    "elastic-tools": "github:zpaceway/elastic-tools#b03f45c14ae12b062b41e60e35e3621e14f06056"
   }
 }

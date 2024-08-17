@@ -5,12 +5,10 @@ const commander_1 = require("commander");
 const program = new commander_1.Command();
 program
     .command("proxy")
-    .option("-ccode, --countryCode <number>", "set internal proxy port", "US")
     .option("-thost, --tunnelHost <string>", "set the tunnel host", "localhost")
     .option("-availability, --minimumAvailability <number>", "the minimum pool availability", "10")
     .action((options) => {
     const parsedOptions = {
-        countryCode: options.countryCode,
         tunnelHost: options.tunnelHost,
         minimumAvailability: parseInt(options.minimumAvailability),
     };

@@ -9,7 +9,6 @@ type CreateTunnelParams = ToString<Parameters<typeof createTunnel>[0]>;
 const program = new Command();
 program
   .command("proxy")
-  .option("-ccode, --countryCode <number>", "set internal proxy port", "US")
   .option("-thost, --tunnelHost <string>", "set the tunnel host", "localhost")
   .option(
     "-availability, --minimumAvailability <number>",
@@ -18,9 +17,6 @@ program
   )
   .action((options: CreateProxyParams) => {
     const parsedOptions = {
-      countryCode: options.countryCode as Parameters<
-        typeof createProxy
-      >[0]["countryCode"],
       tunnelHost: options.tunnelHost,
       minimumAvailability: parseInt(options.minimumAvailability),
     };
