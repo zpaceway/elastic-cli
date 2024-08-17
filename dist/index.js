@@ -20,8 +20,7 @@ program
 });
 program
     .command("tunnel")
-    .option("-cport, --clientsProxyPort <number>", "set the tunnel host", "53505")
-    .option("-pport, --providersProxyPort <number>", "set the tunnel port", "53506")
+    .option("-ccode, --countryCode <string>", "set the tunnel host", "53505")
     .action((options) => {
     const parsedOptions = {
         countryCode: options.countryCode,
