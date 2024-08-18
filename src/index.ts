@@ -1,4 +1,4 @@
-import { createProxy, createTunnel, createClient } from "elastic-tools/src";
+import { createProxy, createTunnel, createClient } from "elastic-tools";
 import { Command } from "commander";
 
 type ToString<T> = { [key in keyof T]: string };

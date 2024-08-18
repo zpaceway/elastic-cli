@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const src_1 = require("elastic-tools/src");
+const elastic_tools_1 = require("elastic-tools");
 const commander_1 = require("commander");
 const program = new commander_1.Command();
 program
@@ -13,12 +13,12 @@ program
         minimumAvailability: parseInt(options.minimumAvailability),
     };
     console.log("Starting proxy with the following options:", parsedOptions);
-    const proxy = (0, src_1.createProxy)(parsedOptions);
+    const proxy = (0, elastic_tools_1.createProxy)(parsedOptions);
     proxy.listen();
 });
 program.command("tunnel").action(() => {
     console.log("Starting elastic tunnel");
-    const tunnel = (0, src_1.createTunnel)();
+    const tunnel = (0, elastic_tools_1.createTunnel)();
     tunnel.listen();
 });
 program
@@ -31,7 +31,7 @@ program
         tunnelHost: options.tunnelHost,
     };
     console.log("Starting client with the following options:", parsedOptions);
-    const client = (0, src_1.createClient)(parsedOptions);
+    const client = (0, elastic_tools_1.createClient)(parsedOptions);
     client.listen();
 });
 program.parse(process.argv);
