@@ -1,12 +1,12 @@
-import { createProxy, createTunnel, createClient } from "elastic-tools";
+import { createProxy, createTunnel, createClient } from "elastic-tools/src";
 import { Command } from "commander";
 
 type ToString<T> = { [key in keyof T]: string };
 type CreateClientParams = ToString<Parameters<typeof createClient>[0]>;
 type CreateProxyParams = ToString<Parameters<typeof createProxy>[0]>;
-type CreateTunnelParams = ToString<Parameters<typeof createTunnel>[0]>;
 
 const program = new Command();
+
 program
   .command("proxy")
   .option("-thost, --tunnelHost <string>", "set the tunnel host", "localhost")
@@ -25,19 +25,11 @@ program
     proxy.listen();
   });
 
-program
-  .command("tunnel")
-  .option("-ccode, --countryCode <string>", "set the tunnel host", "US")
-  .action((options: CreateTunnelParams) => {
-    const parsedOptions = {
-      countryCode: options.countryCode as Parameters<
-        typeof createTunnel
-      >[0]["countryCode"],
-    };
-    console.log("Starting tunnel with the following options:", parsedOptions);
-    const tunnel = createTunnel(parsedOptions);
-    tunnel.listen();
-  });
+program.command("tunnel").action(() => {
+  console.log("Starting elastic tunnel");
+  const tunnel = createTunnel();
+  tunnel.listen();
+});
 
 program
   .command("client")
