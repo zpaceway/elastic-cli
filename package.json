@@ -11,7 +11,7 @@
   "description": "",
   "dependencies": {
     "commander": "^12.1.0",
-    "elastic-tools": "github:zpaceway/elastic-tools#3ba6442e4ad6d4eb461e6a620adfd7f73c4370cf"
+    "elastic-tools": "github:zpaceway/elastic-tools#4b89191cf181795dc37dd9173f506b9340d6ec24"
   },
   "devDependencies": {
     "@types/node": "^22.4.0",
